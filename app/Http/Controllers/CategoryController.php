@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -17,8 +18,8 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        /*$categories = Category::get();
-        return view('category.index', compact('categories'));
+        
+        /*return view('category.index', compact('categories'));
         */
         if ($request->ajax()) {
 
@@ -28,17 +29,22 @@ class CategoryController extends Controller
 
                     ->addIndexColumn()
 
-                    ->addColumn('action', function($row){
+                    ->addColumn('action', function($category){
 
-                        $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">Edytuj </a>';
-                        return $btn;
+                        return '<a href="'. route('category.edit',  ['id' => $category->id]).'"
+                         class="edit btn btn-primary btn-sm">Edytuj </a>';
 
                     })
 
-                    ->editColumn('delete', function($row){
+                    ->addColumn('delete', function($category){
+                        $c = csrf_field();
+                        $m = method_field('DELETE');
 
-                        $btn2 = '<a href="javascript:void(0)" class="edit btn btn-danger btn-sm ">Usuń</a>';
-                        return $btn2;
+                        return '<form action="'. route('category.destroy',  ['id' => $category->id]).'" method="POST">
+                        '.$c.'
+                        '.$m.'
+                        <button class="btn btn-danger destroy-button btn-sm">Usuń</button>';
+                        
 
                     })
 
@@ -52,15 +58,33 @@ class CategoryController extends Controller
 
     }
 
+      /**
+     * Redirect to view
+     *
+     */
+    public function create()
+    {
+        return view('category.form');
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        //
+        $category = new Category(
+            [
+            'name' => $request->input('name')
+            ]
+            );
+
+        $category->save();
+
+        return redirect('/category');
     }
 
     /**
@@ -75,15 +99,35 @@ class CategoryController extends Controller
     }
 
     /**
+     * Edit the specified resource in storage.
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $category = Category::findOrFail($id);
+        $edit = true;
+
+
+        return view('category.form', compact('category', 'edit'));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCategoryRequest $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $category->name = $request->input('name');
+
+        $category->save();
+
+        return redirect('/category');
     }
 
     /**
@@ -94,6 +138,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $category->delete();
+
+        return redirect('/category');
     }
 }

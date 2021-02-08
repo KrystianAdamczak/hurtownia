@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -23,7 +24,32 @@ Route::get('/productCategory', function () {
     return view('productCategory');
 });
 
-Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+Route::resource('category', CategoryController::class);
+Route::resource('product', ProductController::class);
+
+
+Route::name('category.')->prefix('category')->group(function(){
+    Route::get('', [CategoryController::class, 'index'])
+        ->name('index');
+    Route::get('create', [CategoryController::class, 'create'])
+        ->name('create');
+    Route::post('store', [CategoryController::class, 'store'])
+        ->name('store');    
+    Route::get('{id}/edit', [CategoryController::class, 'edit'])
+        ->name('edit')
+        ->where('id', '[0-9]+');
+    Route::patch('{id}', [CategoryController::class, 'update'])
+        ->name('update')
+        ->where('id', '[0-9]+');
+    Route::delete('{id}', [CategoryController::class, 'destroy'])
+        ->name('destroy')
+        ->where('id', '[0-9]+');
+    
+
+});
+
+
+Route::get('/product', [ProductController::class, 'index'])->name('product.index');
 
 Auth::routes();
 

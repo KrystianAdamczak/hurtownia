@@ -18,7 +18,7 @@ a {
         <div class="col-md-3">
         </div>
         <div class="col-md-4 ">
-            <a href="#">
+            <a href="/product">
                 <div class="card mx-auto">
                     <h5 class="card-header">
                         Produkty
