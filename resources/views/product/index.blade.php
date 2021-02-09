@@ -25,6 +25,8 @@
 <div class="container">
     <div class="row justify-content-center mx-auto">
         <div class="col-md-8 ml-5">
+        <a type="button" class="btn btn-primary" href="{{ route('product.create') }}">Dodaj produkt</a>
+        <br><br>
             <table id="data-table" class="table table-striped" style="width:100%;">
             <thead>
                     <tr>
@@ -33,6 +35,15 @@
                         </th>
                         <th>
                             Nazwa
+                        </th>
+                        <th>
+                            Kategoria
+                        </th>
+                        <th>
+                            Ilość
+                        </th>
+                        <th>
+                            Cena jednostkowa zł
                         </th>
                         <th style="width:1px;">
                             Akcje
@@ -74,6 +85,9 @@
 
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
+            {data: 'category.name', name: 'category.name'},
+            {data: 'count', name: 'count'},
+            {data: 'unit_price', name: 'unit_price'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'delete', name: 'delete', orderable: false, searchable: false},
 

@@ -44,12 +44,26 @@ Route::name('category.')->prefix('category')->group(function(){
     Route::delete('{id}', [CategoryController::class, 'destroy'])
         ->name('destroy')
         ->where('id', '[0-9]+');
-    
-
 });
 
 
-Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+Route::name('product.')->prefix('product')->group(function(){
+    Route::get('', [ProductController::class, 'index'])
+        ->name('index');
+    Route::get('create', [ProductController::class, 'create'])
+        ->name('create');
+    Route::post('store', [ProductController::class, 'store'])
+        ->name('store');    
+    Route::get('{id}/edit', [ProductController::class, 'edit'])
+        ->name('edit')
+        ->where('id', '[0-9]+');
+    Route::patch('{id}', [ProductController::class, 'update'])
+        ->name('update')
+        ->where('id', '[0-9]+');
+    Route::delete('{id}', [ProductController::class, 'destroy'])
+        ->name('destroy')
+        ->where('id', '[0-9]+');
+});
 
 Auth::routes();
 

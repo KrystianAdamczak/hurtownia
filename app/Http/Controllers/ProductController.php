@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Yajra\DataTables\DataTables;
 
 class ProductController extends Controller
@@ -18,23 +19,27 @@ class ProductController extends Controller
     {
         if ($request->ajax()) {
 
-            $data = Product::get();
+            $data = Product::with('category')->get();
 
             return Datatables::of($data)
 
                     ->addIndexColumn()
 
-                    ->addColumn('action', function($row){
+                    ->addColumn('action', function($product){
 
-                        $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">Edytuj </a>';
-                        return $btn;
+                        return '<a href="'. route('product.edit',  ['id' => $product->id]).'"
+                         class="edit btn btn-primary btn-sm">Edytuj </a>';
 
                     })
 
-                    ->editColumn('delete', function($row){
+                    ->addColumn('delete', function($product){
+                        $c = csrf_field();
+                        $m = method_field('DELETE');
 
-                        $btn2 = '<a href="javascript:void(0)" class="edit btn btn-danger btn-sm ">Usuń</a>';
-                        return $btn2;
+                        return '<form action="'. route('product.destroy',  ['id' => $product->id]).'" method="POST">
+                        '.$c.'
+                        '.$m.'
+                        <button class="btn btn-danger destroy-button btn-sm">Usuń</button>';
 
                     })
 
@@ -47,6 +52,17 @@ class ProductController extends Controller
         return view('product.index');
     }
 
+       /**
+     * Redirect to view
+     *
+     */
+    public function create()
+    {
+        $categories = Category::get();
+
+        return view('product.form', compact('categories'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -55,7 +71,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product(
+            [
+            'name' => $request->input('name'),
+            'count' => $request->input('count'),
+            'unit_price' => $request->input('unit_price'),
+            'category_id' => $request->input('category_id')
+            ]
+            );
+
+        $product->save();
+
+        return redirect('/product');
     }
 
     /**
@@ -69,6 +96,22 @@ class ProductController extends Controller
         //
     }
 
+
+    /**
+     * Edit the specified resource in storage.
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::get();
+        $edit = true;
+
+
+        return view('product.form', compact('product', 'categories', 'edit'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -78,7 +121,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $product->name = $request->input('name');
+        $product->category_id = $request->input('category_id');
+        $product->count = $request->input('count');
+        $product->unit_price = $request->input('unit_price');
+
+        $product->save();
+
+        return redirect('/product');
     }
 
     /**
@@ -89,6 +141,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $product->delete();
+
+        return redirect('/product');
     }
 }
