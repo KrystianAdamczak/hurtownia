@@ -4,7 +4,8 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
+
+require_once 'vendor/autoload.php';
 
 class UserFactory extends Factory
 {
@@ -22,12 +23,36 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $faker = \Faker\Factory::create();
+
+        $optional = rand(0, 2);
+        $second_name = null;
+        $email = null;
+        $NIP = null;
+
+        if($optional == 1) {
+            $second_name = $faker->firstName;
+            $optional = rand(0, 2);
+        }
+
+        if($optional == 1) {
+            $email = $faker->freeEmail;
+            $optional = rand(0, 2);
+        }
+
+        if($optional == 1) {
+            $NIP = rand(1000000000, 9999999999);
+        }
+
         return [
-            'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'address_id' => rand(1, 500),
+            'name' => $faker->firstName,
+            'second_name' => $second_name,
+            'surname' => $faker->lastName,
+            'phone_number' => $faker->phoneNumber,
+            'email' => $email,
+            'NIP' => $NIP,
+
         ];
     }
 }
