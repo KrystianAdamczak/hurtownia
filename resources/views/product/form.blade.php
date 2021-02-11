@@ -48,8 +48,9 @@
                     </div>
                 @endif
 
+                <p>* - pola wymagane</p>
             
-                <label for="name"> Nazwa </label>
+                <label for="name"> Nazwa* </label>
                 <input type="text" class="form-control" id="name" placeholder="Wprowadź nazwę..." name="name" required
                 @if(isset($edit) && $edit===true)
                 value="{{$product->name}}"
@@ -57,7 +58,7 @@
                 >
                 <br>
 
-                <label for="category_id"> Kategoria </label>
+                <label for="category_id"> Kategoria* </label>
                 <select class="form-control" id="category_id" name="category_id" required>
                 @if(isset($edit) && $edit === true)
                 <option value="{{$product->category->id}}" selected>{{$product->category->name}}</option>
@@ -70,7 +71,7 @@
                 </select>
                 <br>
 
-                <label for="count"> Ilość </label>
+                <label for="count"> Ilość* </label>
                 <input type="text" class="form-control" id="count" placeholder="Wprowadź ilość..." name="count" required
                 @if(isset($edit) && $edit===true)
                 value="{{$product->count}}"
@@ -78,7 +79,7 @@
                 >
                 <br>
 
-                <label for="unit_price"> Cena jednostkowa zł </label>
+                <label for="unit_price"> Cena jednostkowa zł* </label>
                 <input type="text" class="form-control" id="unit_price" placeholder="Wprowadź cenę jednostkową zł..." name="unit_price" required
                 @if(isset($edit) && $edit===true)
                 value="{{$product->unit_price}}"

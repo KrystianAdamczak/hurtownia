@@ -88,6 +88,7 @@ class UserController extends Controller
             'address_id' => $request->input('address_id'),
             'phone_number' => $request->input('phone_number'),
             'email' => $request->input('email'),
+            'PESEL' => $request->input('PESEL'),
             'NIP' => $request->input('NIP')
             ]
             );
@@ -141,6 +142,7 @@ class UserController extends Controller
         $user->address_id = $request->input('address_id');
         $user->phone_number = $request->input('phone_number');
         $user->email = $request->input('email');
+        $user->PESEL = $request->input('PESEL');
         $user->NIP = $request->input('NIP');
 
         $user->save();

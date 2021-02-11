@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "28944c498e991fd47fc85b945ae2f1cb",
+    "content-hash": "4e944e9226ecedc668013bd0373136f8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -943,6 +943,55 @@
                 "source": "https://github.com/guzzle/psr7/tree/1.7.0"
             },
             "time": "2020-09-30T07:37:11+00:00"
+        },
+        {
+            "name": "kkszymanowski/pesel",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KKSzymanowski/PESEL.git",
+                "reference": "8c05ae09facdf8dfb7b8faaa1ee1a62e95f828dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KKSzymanowski/PESEL/zipball/8c05ae09facdf8dfb7b8faaa1ee1a62e95f828dd",
+                "reference": "8c05ae09facdf8dfb7b8faaa1ee1a62e95f828dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3.0"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.4",
+                "phpunit/phpunit": "^9.3.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pesel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kuba Szymanowski",
+                    "email": "kubaszymanowski@gmail.com"
+                }
+            ],
+            "description": "Sprawdzanie poprawności numeru PESEL",
+            "keywords": [
+                "Poprawność",
+                "numeru",
+                "pesel"
+            ],
+            "support": {
+                "issues": "https://github.com/KKSzymanowski/PESEL/issues",
+                "source": "https://github.com/KKSzymanowski/PESEL/tree/3.0.0"
+            },
+            "time": "2020-11-04T11:49:16+00:00"
         },
         {
             "name": "laravel/framework",

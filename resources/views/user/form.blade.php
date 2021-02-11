@@ -53,8 +53,10 @@
                 </div>
                 @endif
 
+                <p>* - pola wymagane</p>
 
-                <label for="name"> Imię </label>
+
+                <label for="name"> Imię* </label>
                 <input type="text" class="form-control" id="name" placeholder="Wprowadź imię..." name="name" required
                     @if(isset($edit) && $edit===true) value="{{$user->name}}" @endif>
                 <br>
@@ -64,12 +66,12 @@
                     name="second_name" @if(isset($edit) && $edit===true) value="{{$user->second_name}}" @endif>
                 <br>
 
-                <label for="surname"> Nazwisko </label>
+                <label for="surname"> Nazwisko* </label>
                 <input type="text" class="form-control" id="surname" placeholder="Wprowadź nazwisko..." name="surname"
                     required @if(isset($edit) && $edit===true) value="{{$user->surname}}" @endif>
                 <br>
 
-                <label for="address_id"> Adres </label>
+                <label for="address_id"> Adres* </label>
                 <select class="form-control" id="address_id" name="address_id" required>
                     @if(isset($edit) && $edit === true)
                     <option value="{{$user->address_id}}" selected>{{$user->address->country}},
@@ -90,7 +92,7 @@
                 <p>Nie ma adresu? <a href="{{route('address.create')}}">Dodaj go!</a>
                     <br><br>
 
-                    <label for="phone_number"> Nr tel. </label>
+                    <label for="phone_number"> Nr tel.* </label>
                     <input type="text" class="form-control" id="phone_number" placeholder="Wprowadź nr telefonu..."
                         name="phone_number" required @if(isset($edit) && $edit===true) value="{{$user->phone_number}}"
                         @endif>
@@ -99,6 +101,11 @@
                     <label for="email"> Adres e-mail </label>
                     <input type="text" class="form-control" id="email" placeholder="Wprowadź adres e-mail..."
                         name="email" @if(isset($edit) && $edit===true) value="{{$user->email}}" @endif>
+                    <br>
+
+                    <label for="PESEL"> PESEL </label>
+                    <input type="text" class="form-control" id="PESEL" placeholder="Wprowadź PESEL..." name="PESEL"
+                        @if(isset($edit) && $edit===true) value="{{$user->PESEL}}" @endif>
                     <br>
 
                     <label for="NIP"> NIP </label>

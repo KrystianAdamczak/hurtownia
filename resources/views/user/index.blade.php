@@ -57,6 +57,9 @@ td a:hover {
                             Adres e-mail
                         </th>
                         <th>
+                            PESEL
+                        </th>
+                        <th>
                             NIP
                         </th>
                         <th>
@@ -122,6 +125,10 @@ $(function() {
             {
                 data: 'email',
                 name: 'email'
+            },
+            {
+                data: 'PESEL',
+                name: 'PESEL'
             },
             {
                 data: 'NIP',

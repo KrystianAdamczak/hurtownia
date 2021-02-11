@@ -47,8 +47,10 @@
                         </ul>
                     </div>
                 @endif
+
+                <p>* - pola wymagane</p>
             
-                <label for="country"> Kraj </label>
+                <label for="country"> Kraj* </label>
                 <select class="form-control" id="country" name="country" required>
                 @if(isset($edit) && $edit === true)
                 <option value="{{$address->country}}" selected>{{$address->country}}</option>
@@ -61,7 +63,7 @@
                 </select>
                 <br>
 
-                <label for="voivodeship"> Województwo </label>
+                <label for="voivodeship"> Województwo* </label>
                 <input type="text" class="form-control" id="voivodeship" placeholder="Wprowadź województwo..." name="voivodeship" required
                 @if(isset($edit) && $edit===true)
                 value="{{$address->voivodeship}}"
@@ -69,7 +71,7 @@
                 >
                 <br>
 
-                <label for="county"> Powiat </label>
+                <label for="county"> Powiat* </label>
                 <input type="text" class="form-control" id="county" placeholder="Wprowadź powiat..." name="county" required
                 @if(isset($edit) && $edit===true)
                 value="{{$address->county}}"
@@ -77,7 +79,7 @@
                 >
                 <br>
 
-                <label for="community"> Gmina </label>
+                <label for="community"> Gmina* </label>
                 <input type="text" class="form-control" id="community" placeholder="Wprowadź gminę..." name="community" required
                 @if(isset($edit) && $edit===true)
                 value="{{$address->community}}"
@@ -93,7 +95,7 @@
                 >
                 <br>
 
-                <label for="house_number"> Nr domu </label>
+                <label for="house_number"> Nr domu* </label>
                 <input type="text" class="form-control" id="house_number" placeholder="Wprowadź nr domu..." name="house_number" required
                 @if(isset($edit) && $edit===true)
                 value="{{$address->house_number}}"
@@ -109,7 +111,7 @@
                 >
                 <br>
 
-                <label for="city"> Miasto </label>
+                <label for="city"> Miasto* </label>
                 <input type="text" class="form-control" id="city" placeholder="Wprowadź miasto..." name="city" required
                 @if(isset($edit) && $edit===true)
                 value="{{$address->city}}"
@@ -117,7 +119,7 @@
                 >
                 <br>
 
-                <label for="postal_code"> Kod pocztowy </label>
+                <label for="postal_code"> Kod pocztowy* </label>
                 <input type="text" class="form-control" id="postal_code" placeholder="Wprowadź kod pocztowy..." name="postal_code" required
                 @if(isset($edit) && $edit===true)
                 value="{{$address->postal_code}}"

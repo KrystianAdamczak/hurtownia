@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.79.0">
+    <meta name="author" content="Krystian Adamczak">
     <title>Hurtownia</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
@@ -14,21 +13,30 @@
 
 
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/apple-touch-icon.png"
         sizes="180x180">
-        <link rel="icon" href="https://i1.wp.com/thehappymarriage.com.au/wp-content/uploads/2016/07/favicon-H-white.png?ssl=1" sizes="32x32"
-        type="image/png">
-    <link rel="icon" href="https://i1.wp.com/thehappymarriage.com.au/wp-content/uploads/2016/07/favicon-H-white.png?ssl=1" sizes="16x16"
-        type="image/png">
+    <link rel="icon"
+        href="https://i1.wp.com/thehappymarriage.com.au/wp-content/uploads/2016/07/favicon-H-white.png?ssl=1"
+        sizes="32x32" type="image/png">
+    <link rel="icon"
+        href="https://i1.wp.com/thehappymarriage.com.au/wp-content/uploads/2016/07/favicon-H-white.png?ssl=1"
+        sizes="16x16" type="image/png">
     <link rel="manifest" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/manifest.json">
     <link rel="mask-icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/safari-pinned-tab.svg"
         color="#7952b3">
     <link rel="icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#7952b3">
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+    </script>
+
 
 
     <style>

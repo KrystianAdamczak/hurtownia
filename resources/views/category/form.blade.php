@@ -48,8 +48,10 @@
                     </div>
                 @endif
 
+                <p>* - pola wymagane</p>
+
             
-                <labal for="name"> Nazwa </label>
+                <labal for="name"> Nazwa* </label>
 
                
                 <input type="text" class="form-control" id="name" placeholder="Wprowadź nazwę..." name="name" required

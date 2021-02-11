@@ -19,6 +19,11 @@
 
 
 
+
+
+
+
+
 </head>
 
 
@@ -27,7 +32,7 @@
         <div class="col-md-8 ml-5">
         <a type="button" class="btn btn-primary" href="{{ route('product.create') }}">Dodaj produkt</a>
         <br><br>
-            <table id="data-table" class="table table-striped" style="width:100%;">
+            <table id="data-table" class="table table-striped " style="width:100%; ">
             <thead>
                     <tr>
                         <th class="text-center">
